@@ -20,9 +20,9 @@ function Footer() {
         <div>
           <p className="footer-title">Follow</p>
           <div className="footer-links">
-            <a href="#">Instagram</a>
-            <a href="#">Pinterest</a>
-            <a href="#">YouTube</a>
+            <a href="https://www.instagram.com/" target="blank">Instagram</a>
+            <a href="https://www.pinterest.com/" target="blank">Pinterest</a>
+            <a href="https://www.youtube.com" target="blank">YouTube</a>
           </div>
         </div>
       </div>

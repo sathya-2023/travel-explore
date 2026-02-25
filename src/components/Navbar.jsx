@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 function Navbar() {
@@ -9,6 +9,10 @@ function Navbar() {
   const toggleMenu = () => {
     setIsOpen(!isOpen)
   }
+
+  useEffect(() => {
+    setIsOpen(false)
+  }, [location.pathname, location.hash])
 
   const scrollTo = (id) => {
     const target = document.querySelector(id)
@@ -54,9 +58,15 @@ function Navbar() {
       </button>
       <nav id="primary-nav" className={`nav ${isOpen ? 'is-open' : ''}`} aria-label="Primary">
         <Link to="/destinations" onClick={() => setIsOpen(false)}>Destinations</Link>
-        <a href="/#journeys" onClick={(e) => handleSectionNav(e, '#journeys')}>Journeys</a>
-        <a href="/#insights" onClick={(e) => handleSectionNav(e, '#insights')}>Insights</a>
-        <a href="/#testimonials" onClick={(e) => handleSectionNav(e, '#testimonials')}>Stories</a>
+        <Link to={{ pathname: '/', hash: '#journeys' }} onClick={(e) => handleSectionNav(e, '#journeys')}>
+          Journeys
+        </Link>
+        <Link to={{ pathname: '/', hash: '#insights' }} onClick={(e) => handleSectionNav(e, '#insights')}>
+          Insights
+        </Link>
+        <Link to={{ pathname: '/', hash: '#testimonials' }} onClick={(e) => handleSectionNav(e, '#testimonials')}>
+          Stories
+        </Link>
         <Link to="/contact" onClick={() => setIsOpen(false)}>Contact</Link>
       </nav>
       <div className="nav-cta">
